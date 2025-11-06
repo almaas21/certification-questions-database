@@ -4,7 +4,7 @@ A comprehensive database of IT certification exam questions extracted from ExamT
 
 ## Overview
 
-This repository contains a curated collection of certification exam questions from leading technology certification providers including CompTIA, AWS, Azure, and Google Cloud Platform. Each question includes detailed explanations, community voting statistics, and discussion comments to provide comprehensive exam preparation resources.
+This repository contains a curated collection of certification exam questions from leading technology certification providers including CompTIA, AWS, Azure, Microsoft, and Google Cloud Platform. Each question includes detailed explanations, community voting statistics, and discussion comments to provide comprehensive exam preparation resources.
 
 ## 📊 Current Progress
 
@@ -19,10 +19,13 @@ This repository contains a curated collection of certification exam questions fr
 | **AWS DevOps Engineer Professional** | 3/50 | 🔄 In Progress (6%) |
 | **Azure Administrator (AZ-104)** | 3/50 | 🔄 In Progress (6%) |
 | **Azure Solutions Architect (AZ-305)** | 1/50 | 🔄 In Progress (2%) |
+| **Microsoft 365 Fundamentals (MS-900)** | 12/50 | 🔄 In Progress (24%) |
+| **Power Platform Fundamentals (PL-900)** | 11/50 | 🔄 In Progress (22%) |
+| **Security, Compliance, and Identity (SC-900)** | 3/50 | 🔄 In Progress (6%) |
 | **GCP Professional Data Engineer** | 2/50 | 🔄 In Progress (4%) |
 
-**Total Questions:** 157+ across 11 certifications
-**Target:** 550+ questions (50 per certification across 11 certifications)
+**Total Questions:** 183+ across 14 certifications  
+**Target:** 700+ questions (50 per certification across 14 certifications)
 
 ## 📁 Repository Structure
 
@@ -41,7 +44,13 @@ certification-questions-database/
 │   └── aws-devops-engineer-professional-questions.md     # DOP (3/50)
 ├── Azure/
 │   ├── azure-administrator-az104-questions.md            # AZ-104 (3/50)
-│   └── azure-solutions-architect-az305-questions.md      # AZ-305 (1/50)
+│   ├── azure-solutions-architect-az305-questions.md      # AZ-305 (1/50)
+│   ├── az-900-questions.md                               # Azure Fundamentals
+│   └── clf-c01-questions.md                              # AWS Cloud Practitioner
+├── Microsoft/
+│   ├── microsoft-365-fundamentals-ms900-questions.md     # MS-900 (12/50)
+│   ├── power-platform-fundamentals-pl900-questions.md    # PL-900 (11/50)
+│   └── security-compliance-identity-sc900-questions.md   # SC-900 (3/50)
 └── GCP/
     └── gcp-professional-data-engineer-questions.md       # PDE (2/50)
 ```
@@ -57,8 +66,9 @@ certification-questions-database/
 ### Target Certifications
 1. **CompTIA**: A+, Network+, Security+, Server+, Cloud+
 2. **AWS**: Solutions Architect Associate, DevOps Engineer Professional, Security Engineer
-3. **Microsoft Azure**: Administrator (AZ-104), Solutions Architect (AZ-305)
-4. **Google Cloud**: Professional Data Engineer, Professional Cloud Architect
+3. **Microsoft**: Microsoft 365, Power Platform, Security/Compliance/Identity Fundamentals
+4. **Azure**: Administrator (AZ-104), Solutions Architect (AZ-305)
+5. **Google Cloud**: Professional Data Engineer, Professional Cloud Architect
 
 ## 📖 Question Format
 
@@ -96,16 +106,17 @@ Each question includes:
 
 This project follows a systematic extraction approach:
 
-1. **CompTIA Certifications** (Priority 1) - Currently extracting Security+
-2. **Google Cloud Platform** (Priority 2) - Next target
-3. **AWS Certifications** (Priority 3) - Following GCP
-4. **Azure Certifications** (Priority 4) - Final priority
+1. **CompTIA Certifications** (Priority 1) - Focus on completing Security+, Server+, Cloud+
+2. **Microsoft Certifications** (Priority 2) - Currently extracting MS-900, PL-900, SC-900
+3. **AWS Certifications** (Priority 3) - Continue expanding question sets
+4. **Azure Certifications** (Priority 4) - Growing Azure question database
+5. **Google Cloud Platform** (Priority 5) - Expanding GCP coverage
 
 ## 📊 Statistics
 
-- **Current Extraction Rate**: ~13 questions per session
+- **Current Extraction Rate**: ~26 questions per session
 - **Target Completion**: 50 questions per certification
-- **Total Estimated Questions**: 550+ across all certifications
+- **Total Estimated Questions**: 700+ across all certifications
 - **Content Quality**: Community-voted, expert-explained questions
 
 ## 🤝 Contributing
@@ -118,6 +129,6 @@ This educational content is compiled from publicly available community discussio
 
 ---
 
-**Last Updated**: Current extraction session  
-**Total Questions**: 157+  
+**Last Updated**: 2025-11-06 17:02:35  
+**Total Questions**: 183+  
 **Repository Status**: Active Development
