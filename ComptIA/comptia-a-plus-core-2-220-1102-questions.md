@@ -1,6 +1,6 @@
 # CompTIA A+ Core 2 (220-1102) Certification Questions
 
-**Total Questions:** 5/50 (10% complete)  
+**Total Questions:** 10/50 (20% complete)  
 **Last Updated:** November 6, 2025  
 **Source:** ExamTopics Community Discussions  
 **Author:** MiniMax Agent
@@ -652,11 +652,251 @@ The standard 8-step change management process follows this order:
 
 ---
 
+## Question 6
+
+# CompTIA A+ Core 2 (220-1102) - Question 6
+
+## Question Details
+- **Exam Code:** CompTIA 220-1102
+- **Topic:** 1
+- **Question Number:** 6
+- **Question Type:** Multiple Choice
+- **Difficulty:** Standard
+
+## Question Text
+A user calls the help desk to report that none of the files on a PC will open. The user also indicates a program on the desktop is requesting payment in exchange for file access. A technician verifies the user's PC is infected with ransomware. Which of the following should the technician do FIRST?
+
+## Answer Choices
+- **A.** Scan and remove the malware.
+- **B.** Schedule automated malware scans.
+- **C.** Quarantine the system.
+- **D.** Disable System Restore.
+
+## Correct Answer
+**C. Quarantine the system**
+
+**Confidence Level:** High  
+**Community Status:** Most Voted  
+**Answer Status:** Suggested Answer
+
+---
+
+## Detailed Explanation
+
+### Primary Explanation
+Quarantining the system is the first step in malware removal after verification. This prevents the ransomware from spreading to other systems on the network and contains the threat before attempting remediation. CompTIA's malware removal objectives specifically list "Quarantine infected systems" as the second step, immediately after investigating and verifying malware symptoms.
+
+### CompTIA Malware Removal Process
+The official CompTIA process for malware removal follows this specific order:
+
+1. **Investigate and verify malware symptoms**
+2. **Quarantine infected systems**
+3. **Disable System Restore in Windows**
+4. **Remediate infected systems:**
+   - a. Update anti-malware software
+   - b. Scanning and removal techniques (e.g., safe mode, preinstallation environment)
+5. **Schedule scans and run updates**
+6. **Enable System Restore and create a restore point in Windows**
+7. **Educate the end user**
+
+### Technical Reasoning
+- **Isolation prevents ransomware spread to network**
+- **Contains the threat before attempting removal**
+- **Protects other systems from compromise**
+- **Essential for incident containment procedures**
+
+### Why Other Options Are Incorrect
+- **Option A (Scan and remove malware):** Scanning and removing malware should only be done after quarantine to ensure the threat is contained
+- **Option B (Schedule automated scans):** Scheduling automated scans is a remediation step that comes much later in the process
+- **Option D (Disable System Restore):** Disabling System Restore is the third step in CompTIA's process, after quarantine
+
+**Source:** [ExamTopics Discussion](https://www.examtopics.com/discussions/comptia/view/86089-exam-220-1102-topic-1-question-6-discussion/)
+
+---
+
+## Question 7
+
+# CompTIA A+ Core 2 (220-1102) Question 7
+
+## Question Details
+**Question Type:** Multiple Choice  
+**Topic:** 1  
+**Question Number:** 7  
+**Exam Code:** CompTIA 220-1102
+
+## Question Text
+A company is issuing smartphone to employees and needs to ensure data is secure if the devices are lost or stolen. Which of the following provides the BEST solution?
+
+## Answer Choices
+A. Anti-malware (community voted 0%)  
+B. Remote wipe (community voted 83%)  
+C. Locator applications (community voted 0%)  
+D. Screen lock (community voted 17%)
+
+## Correct Answer
+**B - Remote wipe**
+
+## Detailed Explanation
+
+### Primary Solution
+Remote wipe is the best solution for securing data on lost or stolen smartphones because it provides the most comprehensive data protection. When a device is lost or stolen, remote wipe can permanently erase all sensitive company data, preventing unauthorized access regardless of whether the device has physical access limitations or security measures that could be bypassed.
+
+### Key Technical Points
+- Provides complete data destruction by destroying sensitive information
+- Works regardless of physical access to the device
+- Eliminates risk of data extraction through sophisticated methods
+- Suitable as a last-resort security measure for company data
+
+### Why Other Options Are Incorrect
+- **A - Anti-malware:** Protects against malicious software but doesn't secure data if the device is physically stolen
+- **C - Locator applications:** Help find the device but don't secure the data if the device cannot be recovered
+- **D - Screen lock:** Can be bypassed, doesn't protect against physical data extraction
+
+**Source:** [ExamTopics Discussion](https://www.examtopics.com/discussions/comptia/view/86090-exam-220-1102-topic-1-question-7-discussion/)
+
+---
+
+## Question 8
+
+# CompTIA A+ Core 2 (220-1102) Practice Question
+
+## Question Information
+- **Exam Code:** CompTIA 220-1102
+- **Topic:** 1
+- **Question Number:** 8
+- **Question Type:** Multiple Choice
+- **Community Engagement:** High - Significant debate between targeted approach vs. security-first approach
+
+## Question
+A user reports seeing random, seemingly non-malicious advertisement notifications in the Windows 10 Action Center. The notifications indicate the advertisements are coming from a web browser. Which of the following is the BEST solution for a technician to implement?
+
+## Answer Choices
+- **A.** Disable the browser from sending notifications to the Action Center.
+- **B.** Run a full antivirus scan on the computer.
+- **C.** Disable all Action Center notifications.
+- **D.** Move specific site notifications from Allowed to Block.
+
+## Correct Answer
+**D. Move specific site notifications from Allowed to Block**
+
+**Community Vote:** 48% (Most Voted)  
+**Confidence Level:** High  
+**Status:** Suggested Answer
+
+## Detailed Explanation
+
+### Primary Explanation
+Moving specific site notifications from Allowed to Block is the best solution because the scenario describes non-malicious advertisements specifically coming from a web browser via the Action Center. This is most likely due to the user having granted notification permissions to specific websites. The targeted approach (Option D) resolves the immediate issue without being overly broad or assuming malware.
+
+### Why Other Options Are Incorrect
+- **A:** Disabling all browser notifications is too broad and may block legitimate notifications
+- **B:** Running antivirus scan assumes malware when the scenario explicitly describes ads as non-malicious
+- **C:** Disabling all Action Center notifications affects security and other important system notifications
+
+**Source:** [ExamTopics Discussion](https://www.examtopics.com/discussions/comptia/view/85821-exam-220-1102-topic-1-question-8-discussion/)
+
+---
+
+## Question 9
+
+# CompTIA A+ Core 2 (220-1102) - Question 9
+
+## Question Details
+- **Exam Code:** CompTIA 220-1102
+- **Topic:** 1
+- **Question Number:** 9
+- **Question Type:** Multiple Choice
+- **Difficulty Level:** Standard
+
+## Question
+After clicking on a link in an email, a Chief Financial Officer (CFO) received a security certificate error. The CFO then reported the incident to a technician. The link is purportedly to the organization's bank. Which of the following should the technician perform **FIRST**?
+
+## Answer Choices
+- **A.** Update the browser's CRLs.
+- **B.** File a trouble ticket with the bank.
+- **C.** Contact the ISP to report the CFO's concern.
+- **D.** Instruct the CFO to exit the browser.
+
+## Correct Answer
+**D. Instruct the CFO to exit the browser**
+
+### Answer Statistics
+- **Confidence Level:** Very High
+- **Community Votes:** 90%
+- **Status:** Most Voted / Suggested Answer
+- **Total Engagement:** Very high (extensive security discussion)
+
+## Detailed Explanation
+
+### Primary Reasoning
+Instructing the CFO to exit the browser immediately is the correct first response because the scenario strongly indicates a **phishing attempt**. The combination of an email link (unknown origin), the word 'purportedly' (suggesting uncertainty), and a security certificate error from a supposed legitimate bank website creates a high-risk scenario requiring immediate threat containment.
+
+### Security Analysis
+- Link from email (potential phishing vector)
+- Word 'purportedly' suggests uncertainty about legitimacy
+- Security certificate error from supposedly trusted bank
+- CFO is high-value target (whaling attack scenario)
+
+### Why Other Options Are Incorrect
+- **A:** Updating CRLs is unnecessary when certificate error indicates fraudulent site
+- **B:** Filing a ticket with the bank can be done after threat containment
+- **C:** Contacting ISP is irrelevant to potential phishing site
+
+**Source:** [ExamTopics Discussion](https://www.examtopics.com/discussions/comptia/view/86091-exam-220-1102-topic-1-question-9-discussion/)
+
+---
+
+## Question 10
+
+# CompTIA A+ Core 2 (220-1102) - Question 10
+
+## Question Information
+- **Exam Code:** CompTIA 220-1102
+- **Topic:** 1
+- **Question Number:** 10
+- **Question Type:** Multiple Choice
+
+## Question
+A help desk technician is troubleshooting a workstation in a SOHO environment that is running above normal system baselines. The technician discovers an unknown executable with a random string name running on the system. The technician terminates the process, and the system returns to normal operation. The technician is concerned other machines may be infected with this unknown virus. Which of the following is the MOST effective way to check other machines on the network for this unknown threat?
+
+## Answer Choices
+- **A.** Run a startup script that removes files by name.
+- **B.** Provide a sample to the antivirus vendor.
+- **C.** Manually check each machine.
+- **D.** Monitor outbound network traffic.
+
+## Correct Answer
+**C. Manually check each machine**
+
+**Community Consensus:** 73% of votes  
+**Confidence Level:** High  
+**Status:** Suggested Answer
+
+## Detailed Explanation
+
+### Primary Explanation
+Manually checking each machine is the most effective approach for a SOHO environment because SOHO networks typically have few machines, making manual inspection practical and immediate. This direct approach allows for quick identification and removal of the threat without waiting for antivirus vendor updates, which can take weeks or months.
+
+### Technical Reasoning
+- SOHO environments typically have limited number of machines (5-10 or fewer)
+- Manual inspection provides immediate, direct verification
+- No waiting period for vendor analysis or signature updates
+- Complete network audit ensures no infected machines are missed
+
+### Why Other Options Are Incorrect
+- **A:** Running startup script is ineffective without knowing specific file name/hash
+- **B:** Providing sample to vendor takes too long (weeks to months) for immediate protection
+- **D:** Monitoring network traffic is detective, not corrective
+
+**Source:** [ExamTopics Discussion](https://www.examtopics.com/discussions/comptia/view/85761-exam-220-1102-topic-1-question-10-discussion/)
+
+---
+
 ## Summary
 
-**Total Questions:** 5/50 (10% complete)  
-**Community Consensus:** High (ranging from 56% to 90%)  
-**Topics Covered:** Wireless networking, Linux server management, data security, mobile malware, change management
+**Total Questions:** 10/50 (20% complete)  
+**Community Consensus:** High (ranging from 35% to 90%)  
+**Topics Covered:** Wireless networking, Linux server management, data security, mobile malware, change management, ransomware response, mobile device security, browser notifications, phishing detection, SOHO network security
 
 ### Question Breakdown:
 1. **Q1:** Wireless network configuration (35% consensus) - Simulation PBQ
@@ -664,12 +904,19 @@ The standard 8-step change management process follows this order:
 3. **Q3:** Secure data removal methods (89% consensus)
 4. **Q4:** Mobile malware response procedures (90% consensus)
 5. **Q5:** Change management process (56% consensus)
+6. **Q6:** Ransomware quarantine response (Strong consensus for C)
+7. **Q7:** Mobile device security with remote wipe (83% consensus)
+8. **Q8:** Browser notifications vs malware (48% consensus)
+9. **Q9:** Phishing incident response (90% consensus)
+10. **Q10:** SOHO network security checking (73% consensus)
 
 ### Key Learning Areas:
-- **Networking:** WiFi standards, frequency bands, security protocols
+- **Networking:** WiFi standards, frequency bands, security protocols, SOHO network management
 - **Systems Administration:** Remote access protocols, CLI vs GUI troubleshooting
-- **Security:** Data sanitization standards, malware response
+- **Security:** Data sanitization standards, malware response, ransomware containment, phishing detection
+- **Mobile Security:** Device protection, remote wipe, malware response
 - **IT Management:** Change management lifecycle, process sequencing
+- **Browser Management:** Notification permissions, configuration vs malware
 
 ---
 
