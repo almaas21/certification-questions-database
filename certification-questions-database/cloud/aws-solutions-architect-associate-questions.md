@@ -770,3 +770,148 @@ D) Use Amazon EventBridge (CloudWatch Events) as the destination for jobs and sc
 Notes:
 - All question scenarios are paraphrased from visible patterns on ExamTopics to avoid verbatim copying.
 - Community voting percentages are approximate observations and not official scores.
+### Question 26
+**Question Type:** Multiple Choice  
+**Topic:** Extend On‑Prem SMB Storage with Low‑Latency Cache + Lifecycle
+
+A company runs an SMB file server on premises. Large files are accessed frequently for the first 7 days, and rarely afterward. Capacity is nearing limits. The team must increase available storage quickly without losing low‑latency access to recently accessed files and must implement file lifecycle management to avoid future storage issues. Which solution meets these requirements?
+
+**Answer Choices:**
+A) Use AWS DataSync to copy files older than 7 days to Amazon S3  
+B) Deploy AWS Storage Gateway — S3 File Gateway and apply an S3 lifecycle policy to transition objects to colder storage after 7 days  
+C) Create an Amazon FSx for Windows File Server file system to extend storage  
+D) Install S3 client utilities on every user PC and configure lifecycle transitions on the bucket
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- S3 File Gateway presents an SMB/NFS share backed by S3 and provides a local cache for recently accessed data, delivering low‑latency access while extending capacity elastically in S3.  
+- Combine with S3 lifecycle (e.g., move to Glacier Flexible Retrieval or Deep Archive after 7 days) to control long‑term costs.  
+- DataSync (A) moves data but does not provide a low‑latency cache or a unified share.  
+- FSx for Windows (C) extends SMB storage but does not address lifecycle tiering in S3.  
+- Client utilities (D) are operationally heavy and don’t provide a shared cache.
+
+**Community Voting (observed):**
+- A: 12%  
+- B: 71%  
+- C: 12%  
+- D: 5%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 27
+**Question Type:** Multiple Choice  
+**Topic:** Preserve Order of E‑commerce Orders via API Gateway
+
+An e‑commerce application sends new order events to an Amazon API Gateway REST API. The company must ensure orders are processed strictly in the order they are received. What should a solutions architect do?
+
+**Answer Choices:**
+A) Publish to an SNS topic and subscribe a Lambda function for processing  
+B) Send messages to an Amazon SQS FIFO queue; configure the FIFO queue to invoke AWS Lambda for processing  
+C) Use an API Gateway authorizer to block requests while processing  
+D) Send messages to an SQS Standard queue and invoke Lambda for processing
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- SQS FIFO guarantees ordered delivery within a message group and exactly‑once processing semantics. Integrating API Gateway with SQS FIFO ensures strict order handling.  
+- SNS (A) and SQS Standard (D) do not guarantee ordering.  
+- API Gateway authorizers (C) are for authentication/authorization, not queue ordering.
+
+**Community Voting (observed):**
+- A: 10%  
+- B: 79%  
+- C: 5%  
+- D: 6%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 28
+**Question Type:** Multiple Choice  
+**Topic:** Windows SMB Share with AD Integration
+
+A Windows‑based engineering team requires a highly available SMB file share that integrates with Active Directory, supports Windows ACLs, DFS namespaces, and provides multi‑AZ durability. The share will be accessed from EC2 instances and on‑prem clients over AWS Direct Connect. Which service best fits?
+
+**Answer Choices:**
+A) AWS Storage Gateway — S3 File Gateway  
+B) Amazon FSx for Windows File Server (Multi‑AZ)  
+C) Amazon EFS with mount targets in each AZ  
+D) Self‑managed Windows file server on EC2 with RAID
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- FSx for Windows File Server provides managed SMB with AD integration, Windows ACLs, DFS, and Multi‑AZ HA, ideal for native Windows workloads.  
+- S3 File Gateway exposes S3‑backed shares with limited Windows features.  
+- EFS is NFS (POSIX), not SMB.  
+- Self‑managed EC2 adds operational burden and risks around HA and maintenance.
+
+**Community Voting (observed):**
+- A: 7%  
+- B: 82%  
+- C: 6%  
+- D: 5%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 29
+**Question Type:** Multiple Choice  
+**Topic:** Optimize S3 Costs for Unpredictable Access
+
+A data science team writes datasets to S3. Object access patterns are unpredictable—some objects might be read heavily for a few days, then not accessed for months. The team wants to minimize storage cost automatically without operational overhead while maintaining millisecond retrieval when accessed. What should be used?
+
+**Answer Choices:**
+A) S3 Standard only  
+B) S3 Intelligent‑Tiering  
+C) S3 Glacier Deep Archive with lifecycle after 7 days  
+D) S3 One Zone‑IA with lifecycle after 30 days
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- S3 Intelligent‑Tiering automatically moves objects across frequent/infrequent access tiers (and optional Archive tiers) based on actual access patterns, removing the need to manage lifecycle rules manually while keeping instant retrieval for frequently accessed data.  
+- Deep Archive (C) has hours‑scale restore times; One Zone‑IA (D) reduces durability across AZs.  
+- Standard (A) is most expensive for long‑lived, rarely accessed data.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 77%  
+- C: 8%  
+- D: 6%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 30
+**Question Type:** Multiple Choice  
+**Topic:** Scheduled Tiering of Aged Files to S3
+
+A media team needs an automated, low‑ops workflow to move files older than 30 days from an on‑premises NFS share to S3 for archival while keeping recent files on‑prem for fast edits. The solution should support scheduling and incremental transfers. What meets these requirements?
+
+**Answer Choices:**
+A) Manually run the AWS CLI every month to copy files to S3  
+B) Use AWS DataSync with a scheduled Task that filters by last‑modified time to copy aged files to S3; apply lifecycle policies on the destination bucket  
+C) Deploy S3 File Gateway and rely on users to drag/drop old files into the gateway share  
+D) Stand up a custom Python script on EC2 with cron to rsync files to S3
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- AWS DataSync supports scheduled, incremental transfers from SMB/NFS to S3 with filtering, compression, and encryption; combining this with S3 lifecycle provides cost‑optimized archival.  
+- Manual CLI (A) and custom scripts (D) are brittle and higher ops.  
+- S3 File Gateway (C) relies on manual user actions and does not enforce policy‑based tiering.
+
+**Community Voting (observed):**
+- A: 8%  
+- B: 84%  
+- C: 5%  
+- D: 3%
+
+**Source:** ExamTopics.com (paraphrased)
