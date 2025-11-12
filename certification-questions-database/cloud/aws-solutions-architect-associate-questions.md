@@ -617,6 +617,67 @@ D) A single EC2 instance subscribed to S3 events via SNS
 - D: 4%
 
 **Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+### Question 21
+**Question Type:** Multiple Choice  
+**Topic:** Shared Storage for Web App Across Multiple AZs
+
+A company hosts a web application on two Amazon EC2 instances placed in different Availability Zones behind an Application Load Balancer. User‑uploaded documents are currently stored on each instance’s attached Amazon EBS volume. After scaling out, users report that they sometimes see only a subset of their documents depending on which instance served the request. The company wants a managed solution that provides a single, consistent file store accessible from both instances in all AZs with minimal operational overhead. What should a solutions architect recommend?
+
+**Answer Choices:**
+A) Enable ALB session stickiness so each user always hits the same instance  
+B) Migrate documents to Amazon S3 and serve them directly from the bucket  
+C) Use Amazon EFS (Regional) and mount the file system to both EC2 instances  
+D) Configure cross‑AZ replication between the EBS volumes attached to each instance
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- Amazon EFS provides a managed, regional, highly available NFS file system with mount targets in each AZ. Multiple EC2 instances can concurrently read/write the same files, ensuring a consistent document set regardless of which instance serves the request.  
+- Session stickiness (A) does not solve the underlying data fragmentation.  
+- S3 (B) is a valid alternative for object storage, but if the application requires POSIX file system semantics and standard file paths, EFS fits better with minimal code changes.  
+- EBS volumes (D) cannot be replicated across AZs for shared read/write file semantics.
+
+**Community Voting (observed):**
+- A: 7%  
+- B: 21%  
+- C: 66%  
+- D: 6%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 22
+**Question Type:** Multiple Choice  
+**Topic:** Enforce Private S3 Access via VPC Endpoint
+
+Security mandates that EC2 instances in private subnets access a specific Amazon S3 bucket without using the public internet. Additionally, the bucket must reject any request that does not traverse the company’s VPC endpoint. Which solution meets these requirements with the least cost and operational overhead?
+
+**Answer Choices:**
+A) Attach NAT gateways to private subnets and route S3 traffic over the internet  
+B) Create an S3 Gateway VPC endpoint, update private subnet route tables to the S3 prefix list, and add a bucket policy that allows access only when `aws:SourceVpce` matches the endpoint ID  
+C) Use an S3 Interface VPC endpoint and allow HTTPS from private subnets via security groups  
+D) Deploy a fleet of proxy EC2 instances in public subnets to relay S3 traffic from the private subnets
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- An S3 Gateway VPC endpoint provides private connectivity to S3 without traversing the public internet and avoids per‑hour/data‑processing charges typical of interface endpoints.  
+- Updating private subnet route tables to the S3 prefix list (pl-*) via the gateway endpoint enables private paths.  
+- A restrictive S3 bucket policy that checks `aws:SourceVpce` ensures the bucket only accepts requests routed through the specified endpoint, blocking any access outside the VPC.
+
+- Why not A: NAT gateways add cost and still use the public internet.  
+- Why not C: Interface endpoints add extra per‑hour/data‑processing costs for S3 and are not generally required; S3 is served via Gateway endpoints in most Regions.  
+- Why not D: Managing a proxy fleet increases complexity and cost.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 84%  
+- C: 5%  
+- D: 2%
+
+**Source:** ExamTopics.com (paraphrased)
+
 ## Sources
 - ExamTopics: https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-associate-saa-c03/ (visited Nov 12, 2025)
 - Search engine: DuckDuckGo (used to discover and navigate to ExamTopics pages)
