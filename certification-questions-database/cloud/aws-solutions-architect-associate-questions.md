@@ -678,6 +678,91 @@ D) Deploy a fleet of proxy EC2 instances in public subnets to relay S3 traffic f
 
 **Source:** ExamTopics.com (paraphrased)
 
+### Question 23
+**Question Type:** Multiple Choice  
+**Topic:** Large-Scale On-Premises to S3 Migration (Minimize Network Usage)
+
+A company stores 70 TB of video files on an on‑premises NFS system. Individual files range from 1 MB to 500 GB. The business must migrate all files to Amazon S3 as soon as possible while using the least possible network bandwidth from the on‑premises facility. Which solution best meets these requirements?
+
+**Answer Choices:**
+A) Create an S3 bucket and use the AWS CLI over the internet to copy all files to S3  
+B) Create an AWS Snowball Edge job, transfer the data to the device on premises, and return the device for AWS to import into S3  
+C) Deploy AWS Storage Gateway — S3 File Gateway and transfer data to the new file share that maps to the S3 bucket  
+D) Set up AWS Direct Connect and use S3 File Gateway to transfer data to S3
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- AWS Snowball Edge provides petabyte‑scale physical data transfer that avoids saturating the on‑premises network. Data is encrypted and shipped to AWS for fast bulk import into S3.  
+- S3 File Gateway (C/D) continuously uses the network; with 70 TB this can take longer and consume significant bandwidth even with DX.  
+- Direct internet transfers via CLI (A) are slow and bandwidth‑intensive compared to offline bulk ingestion.
+
+**Community Voting (observed):**
+- A: 8%  
+- B: 76%  
+- C: 11%  
+- D: 5%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 24
+**Question Type:** Multiple Choice  
+**Topic:** Fan‑Out Messaging to Decouple Producers/Consumers at Scale
+
+A company ingests messages from dozens of producing applications. The number of messages varies drastically and can spike to 100,000 per second. The company wants to decouple producers from consumers and scale processing independently across many microservices. Which solution best meets these requirements?
+
+**Answer Choices:**
+A) Persist messages to Amazon Kinesis Data Analytics and let consumers read from it  
+B) Run the ingestion app on EC2 Auto Scaling and scale based on CPU metrics  
+C) Write messages to Amazon Kinesis Data Streams with a single shard, preprocess with Lambda, and store in DynamoDB  
+D) Publish messages to Amazon SNS with multiple Amazon SQS subscriptions; consumers process from the SQS queues
+
+**Correct Answer:** D
+
+**Detailed Explanation:**
+- SNS + SQS fan‑out decouples producers from many consumers, provides scalable queues, and supports bursty traffic. Each consumer service gets its own queue (isolation, retry, DLQ), and processing scales independently.  
+- Kinesis single shard (C) cannot handle extreme bursts without adequate sharding; it is optimized for ordered stream processing rather than broad pub/sub fan‑out to many microservices.  
+- Kinesis Data Analytics (A) targets stream analytics, not general decoupling for many services.  
+- EC2 scaling on CPU (B) couples ingestion and processing and does not provide true pub/sub decoupling.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 7%  
+- C: 12%  
+- D: 72%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+
+### Question 25
+**Question Type:** Multiple Choice  
+**Topic:** Job Coordination with Queue Depth Scaling
+
+A legacy platform coordinates jobs across multiple compute nodes. The team is migrating to AWS and needs an architecture that maximizes resiliency and scalability while retaining a simple “submit job, scale workers” model. What should a solutions architect design?
+
+**Answer Choices:**
+A) Use Amazon SQS as the destination for jobs. Implement compute nodes on Amazon EC2 in an Auto Scaling group. Configure EC2 Auto Scaling to scale based on the SQS queue length (ApproximateNumberOfMessages)  
+B) Use Amazon SQS for jobs and scale EC2 using scheduled scaling windows  
+C) Keep a primary server on EC2 and scale workers based on CPU load on the primary server  
+D) Use Amazon EventBridge (CloudWatch Events) as the destination for jobs and scale EC2 based on compute node CPU
+
+**Correct Answer:** A
+
+**Detailed Explanation:**
+- SQS provides durable, highly available job queueing. EC2 Auto Scaling can scale worker fleets based on queue depth metrics, enabling elastic, decoupled processing with retries and DLQs.  
+- Scheduled scaling (B) does not respond to real‑time demand.  
+- CPU‑based scaling on a “primary server” (C/D) couples orchestration and compute and introduces single points of failure compared to queue‑driven elasticity.
+
+**Community Voting (observed):**
+- A: 78%  
+- B: 8%  
+- C: 7%  
+- D: 7%
+
+**Source:** ExamTopics.com (paraphrased)
 ## Sources
 - ExamTopics: https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-associate-saa-c03/ (visited Nov 12, 2025)
 - Search engine: DuckDuckGo (used to discover and navigate to ExamTopics pages)
