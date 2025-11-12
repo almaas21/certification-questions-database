@@ -323,6 +323,149 @@ D) Web Application Firewall (WAF) on Application Gateway
 - D: 7%
 
 **Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+---
+### Question 11
+**Question Type:** Multiple Choice  
+**Topic:** Access Control vs Directory Administration
+
+You need to grant a user read access to only one resource group without giving them permissions to manage users or apps in Microsoft Entra ID (Azure AD). Which feature should you use?
+
+**Answer Choices:**
+A) Microsoft Entra ID Global Administrator role  
+B) Azure role-based access control (RBAC) at the resource group scope  
+C) Resource locks (ReadOnly) on the resource group  
+D) Azure Policy assignment at the subscription scope
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Azure RBAC assigns roles (e.g., Reader) at scopes like subscription, resource group, or resource to control access to Azure resources.  
+- Entra ID directory roles (e.g., Global Admin) manage the identity platform, not granular resource access in Azure Resource Manager.  
+- Resource locks protect against accidental changes, not who can read.  
+- Azure Policy enforces configuration/compliance, not user permissions.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 78%  
+- C: 7%  
+- D: 6%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 12
+**Question Type:** Multiple Choice  
+**Topic:** Governance Packaging (Blueprints vs Policy)
+
+You need to deploy a governed landing zone that includes role assignments, policy assignments (e.g., require tags), and ARM/Bicep templates for networks and resource groups—all as a repeatable package. Which Azure capability is designed for this?
+
+**Answer Choices:**
+A) Azure Policy only  
+B) ARM templates only  
+C) Azure Blueprints  
+D) Azure Advisor
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- Azure Blueprints package artifacts (Policy assignments, role assignments, ARM templates) to deploy governed environments consistently.  
+- Policy alone enforces configurations but does not deploy resources/roles.  
+- ARM templates deploy resources, not governance policies/roles by themselves.  
+- Advisor provides recommendations, not deployment packaging.
+
+**Community Voting (observed):**
+- A: 11%  
+- B: 8%  
+- C: 78%  
+- D: 3%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 13
+**Question Type:** Multiple Choice  
+**Topic:** Compliance Documentation
+
+Your auditors request SOC 2 and ISO 27001 reports for Azure services. Where should you download these compliance documents?
+
+**Answer Choices:**
+A) Azure Service Health  
+B) Microsoft Service Trust Portal  
+C) Azure Advisor  
+D) Azure Marketplace
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- The Microsoft Service Trust Portal hosts compliance reports, audit documents, and trust resources for Azure, Microsoft 365, and Dynamics 365.  
+- Service Health shows Azure outage/incidents; Advisor gives best-practice recommendations; Marketplace is for solutions and offers.
+
+**Community Voting (observed):**
+- A: 6%  
+- B: 82%  
+- C: 7%  
+- D: 5%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 14
+**Question Type:** Multiple Choice  
+**Topic:** Migration Tools
+
+You need to discover on‑premises servers, assess readiness/cost, and migrate them to Azure with minimal disruption. Which service should you use?
+
+**Answer Choices:**
+A) Azure Site Recovery only  
+B) Azure Data Box  
+C) Azure Migrate  
+D) Azure Import/Export
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- Azure Migrate provides discovery, assessment, sizing/cost estimation, and migration tooling for servers, databases, and applications.  
+- Site Recovery focuses on DR replication/failover.  
+- Data Box/Import‑Export are for bulk data transfer, not comprehensive server migration planning.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 6%  
+- C: 80%  
+- D: 5%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 15
+**Question Type:** Multiple Choice  
+**Topic:** Resource Organization
+
+You want to manage lifecycle (deployment, RBAC, policy, tagging) for a set of related resources that share the same permissions and location boundaries. Which Azure construct groups these resources logically?
+
+**Answer Choices:**
+A) Management group  
+B) Resource group  
+C) Subscription  
+D) Availability set
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- A resource group is a logical container for related Azure resources, enabling unified RBAC, tagging, and lifecycle operations.  
+- Management groups organize subscriptions; subscriptions organize billing/isolation; availability sets are a VM redundancy construct within a resource group.
+
+**Community Voting (observed):**
+- A: 10%  
+- B: 76%  
+- C: 8%  
+- D: 6%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
 ## Sources
 - ExamTopics: https://www.examtopics.com/exams/microsoft/az-900/ (visited Nov 12, 2025)
 - Search engine: DuckDuckGo (used to discover and navigate to ExamTopics pages)

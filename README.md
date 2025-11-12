@@ -91,6 +91,55 @@ certification-questions-database/
 3. **Format Consistency:** Questions follow standardized markdown formatting
 4. **Target Goal:** 50 high-quality questions per certification exam
 
+## 🛠️ Automation Tools
+
+### Production-Ready Web Scraper
+
+This repository includes a **production-ready web scraper** for automated question extraction from ExamTopics.com:
+
+**Location:** `../tools/` directory
+
+**Features:**
+- ✅ Robust error handling and retry logic
+- ✅ Rate limiting to respect target sites
+- ✅ HTML-to-markdown conversion
+- ✅ Batch processing capabilities
+- ✅ Content validation
+- ✅ Comprehensive logging
+- ✅ Configuration file support
+- ✅ Full test coverage
+
+**Quick Start:**
+```cmd
+# Install dependencies
+python -m pip install -r ..\tools\requirements-crawlforai.txt
+
+# Scrape a single URL
+python ..\tools\crawlforai_scraper.py "https://www.examtopics.com/..." -o question.md
+
+# Batch process multiple URLs
+python ..\tools\crawlforai_scraper.py --batch urls.txt --rate-limit 5.0
+```
+
+**Documentation:**
+- Quick Start Guide: `../tools/QUICKSTART.md`
+- Full Documentation: `../tools/README-crawlforai.md`
+- Project Summary: `../tools/PROJECT_SUMMARY.md`
+
+**Helper Commands:**
+```cmd
+# Interactive scraping
+..\tools\scraper.bat scrape
+
+# Run tests
+..\tools\scraper.bat test
+
+# Install everything
+..\tools\scraper.bat install
+```
+
+**⚠️ Legal Notice:** Always respect ExamTopics.com's robots.txt and terms of service. Use rate limiting (5+ seconds between requests) to avoid overwhelming their servers.
+
 ## 🎯 Exam Coverage
 
 ### Microsoft Certifications

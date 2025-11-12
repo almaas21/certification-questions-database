@@ -330,6 +330,160 @@ D) Partner Interconnect at 1 Gbps
 - D: 6%
 
 **Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+---
+### Question 11
+**Question Type:** Multiple Choice  
+**Topic:** Session State and Scaling on Managed Platforms
+
+A news feed service runs on a managed, autoscaled platform (e.g., App Engine/Cloud Run). During peak load, users intermittently see items they already viewed. The application keeps a Python dictionary in process memory named "sessions" to track viewed IDs. What is the most likely cause?
+
+**Answer Choices:**
+A) Lack of load balancer cookie-based session affinity  
+B) Session data stored in local process memory is not shared across instances, causing inconsistent per-user state  
+C) Cloud CDN is caching dynamic responses for logged-in users  
+D) IAM roles are misconfigured, causing identity mix-ups between users
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- When the platform scales out, multiple instances handle requests. A module/global in-memory dictionary is not shared across instances and is lost on restart. Users routed to a different instance appear to have "new" state.  
+- Use a shared session store (Cloud Memorystore for Redis, Firestore/Datastore, or signed cookies) to persist session state decoupled from instance memory.
+
+- Why not A: Affinity does not guarantee stickiness across autoscaling/health events and does not solve process memory volatility.  
+- Why not C: Dynamic, personalized content should be marked private; moreover, the core problem here is non-shared state.  
+- Why not D: IAM controls authorization, not per-request session memory.
+
+**Community Voting (observed):**
+- A: 12%  
+- B: 74%  
+- C: 8%  
+- D: 6%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 12
+**Question Type:** Multiple Choice  
+**Topic:** Shared VPC and Centralized Security
+
+An organization with dozens of application teams wants each team to deploy into its own project, while networking and security must be centrally administered. You need to minimize network sprawl and ensure consistent firewall enforcement across teams. What should you design?
+
+**Answer Choices:**
+A) Per-project standalone VPCs with a full mesh of VPC peerings  
+B) A Shared VPC host project exposing subnets to service projects, plus hierarchical firewall policies at the org/folder level  
+C) A single monolithic project for all teams with custom IAM roles  
+D) VPC Service Controls only, without Shared VPC
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Shared VPC centralizes network ownership in a host project and attaches service projects for isolated deployments.  
+- Hierarchical firewall policies (HFPs) enforce guardrails at org/folder, ensuring consistent rules above project-level firewalls.
+
+- Why not A: Full-mesh peering is complex to manage, error-prone, and lacks centralized policy.  
+- Why not C: A single project harms isolation and billing/quotas per team.  
+- Why not D: VPC SC protects managed service perimeters, not L3/L4 traffic or subnet lifecycle across projects.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 80%  
+- C: 6%  
+- D: 5%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 13
+**Question Type:** Multiple Choice  
+**Topic:** Encryption Strategy and Key Management
+
+Compliance mandates that data in BigQuery and Cloud Storage be encrypted with customer-managed keys, with centralized rotation, detailed audit logs, and the ability to immediately disable access if a compromise is suspected. Operational overhead should be minimal. What should you implement?
+
+**Answer Choices:**
+A) Default Google-managed encryption only  
+B) Customer-supplied encryption keys (CSEK) passed with every request  
+C) Customer-Managed Encryption Keys (CMEK) using Cloud KMS, referencing the key on datasets and buckets  
+D) Pure client-side encryption with custom libraries and upload ciphertext only
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- CMEK integrates natively with BigQuery and GCS, providing centralized key lifecycle (create, rotate, disable), audit via Cloud KMS logs, and minimal operational burden.  
+- Disabling or revoking the key immediately affects access to protected data.
+
+- Why not A: Does not meet customer-managed key control requirements.  
+- Why not B: CSEK is legacy, harder to operate at scale, and not supported broadly across all services/features.  
+- Why not D: Client-side encryption increases complexity (key distribution, re-encryption), complicates analytics and operations.
+
+**Community Voting (observed):**
+- A: 7%  
+- B: 10%  
+- C: 78%  
+- D: 5%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 14
+**Question Type:** Multiple Choice  
+**Topic:** Globally-Available Relational OLTP
+
+You need a relational database with strongly consistent reads/writes across continents, 99.99%+ multi-region availability, and automatic sharding. Which service best fits?
+
+**Answer Choices:**
+A) Cloud Bigtable with multi-cluster routing  
+B) Cloud Spanner with multi-region instance configuration  
+C) Cloud SQL with cross-region read replicas  
+D) Firestore in Datastore mode (single-region)
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Cloud Spanner provides globally-distributed, strongly consistent relational semantics, automatic sharding, and high availability with multi-region configs.  
+- Bigtable is wide-column and not relational; Cloud SQL does not support strongly consistent multi-region writes; Firestore (Datastore mode) is not a relational RDBMS.
+
+**Community Voting (observed):**
+- A: 11%  
+- B: 76%  
+- C: 9%  
+- D: 4%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
+
+---
+
+### Question 15
+**Question Type:** Multiple Choice  
+**Topic:** BigQuery Cost Control for Steady ETL
+
+Your organization runs predictable daily ETL jobs in BigQuery and keeps incurring volatile on-demand query costs. Finance requires predictable monthly spend and the ability to cap usage while maintaining performance. What should you do?
+
+**Answer Choices:**
+A) Keep on-demand pricing and only add budget alerts  
+B) Migrate the pipelines to Dataproc Spark SQL to avoid BigQuery costs  
+C) Purchase BigQuery Reservations (committed slots) for the ETL project, use workload management and optionally Flex Slots for bursts  
+D) Export data to Cloud SQL and run ETL there
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- BigQuery Reservations provide flat-rate capacity (slots) for predictable spend. Assign projects/folders to reservations, use job priorities and slot commitment levels, and add Flex Slots for short bursts.  
+- This preserves performance while capping costs.
+
+- Why not A: Alerts do not control cost; spend remains variable.  
+- Why not B: Adds ops overhead and may reduce performance.  
+- Why not D: Cloud SQL is not optimized for large-scale analytical ETL.
+
+**Community Voting (observed):**
+- A: 8%  
+- B: 7%  
+- C: 80%  
+- D: 5%
+
+**Source:** ExamTopics.com via DuckDuckGo (paraphrased)
 ## Sources
 - ExamTopics: https://www.examtopics.com/exams/google/professional-cloud-architect/ (visited Nov 12, 2025)
 - Search engine: DuckDuckGo (used to discover and navigate to ExamTopics pages)
