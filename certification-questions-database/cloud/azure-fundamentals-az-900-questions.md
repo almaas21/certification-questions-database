@@ -473,3 +473,155 @@ D) Availability set
 Notes:
 - All question scenarios are paraphrased from visible patterns on ExamTopics to avoid verbatim copying.
 - Community voting percentages are approximate observations and not official scores.
+---
+### Question 16
+**Question Type:** Multiple Choice  
+**Topic:** Azure App Service Plan Tiers
+
+Your team must host 10 web apps on Azure. Requirements:
+- Each app uses a custom domain.
+- Each app requires around 10 GB of storage.
+- Each app must run in dedicated compute instances (not shared).
+- Load balancing between instances must be included.
+- Minimize cost.
+
+Which App Service plan tier should you use?
+
+**Answer Choices:**
+A) Free  
+B) Shared  
+C) Basic  
+D) Standard
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- Free/Shared plans run on shared compute and do not support custom domains (Free) or dedicated instances.  
+- Basic provides dedicated VM(s), supports custom domains, manual scale-out with built-in load balancing across instances, and is cheaper than Standard.  
+- Standard adds features like staging slots, autoscale, daily backups, etc., which are not explicitly required here.
+
+**Community Voting (observed):**
+- A: 6%  
+- B: 7%  
+- C: 64%  
+- D: 23%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 17
+**Question Type:** Multiple Choice  
+**Topic:** Storage Redundancy (Read from Secondary)
+
+You are designing storage for geo-clustered sites that require:
+- Data stored on nodes in separate geographic locations  
+- Ability to read from the secondary location as well as the primary
+
+Which Azure storage redundancy option should you recommend?
+
+**Answer Choices:**
+A) Locally redundant storage (LRS)  
+B) Geo-redundant storage (GRS)  
+C) Read-access geo-redundant storage (RA-GRS)  
+D) Zone-redundant storage (ZRS)
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- GRS replicates to a secondary region but does not allow reads from the secondary.  
+- RA-GRS enables read access to the secondary endpoint, meeting the requirement.  
+- LRS replicates within a single datacenter; ZRS replicates across zones in one region only.
+
+**Community Voting (observed):**
+- A: 5%  
+- B: 21%  
+- C: 68%  
+- D: 6%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 18
+**Question Type:** Yes/No (Goal Evaluation)  
+**Topic:** Support Plans and Advisory Services
+
+Your company currently has the Basic support plan. You need Microsoft to provide an assessment/review of your Azure environment’s design.  
+Proposed solution: Subscribe to the Professional Direct (ProDirect) support plan.  
+Does this solution meet the goal?
+
+**Answer Choices:**
+A) Yes  
+B) No
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Architecture assessments/design reviews are provided under Microsoft Unified/Premier Support.  
+- ProDirect improves response times and provides advisory guidance but does not include comprehensive design assessments offered by Unified/Premier.
+
+**Community Voting (observed):**
+- A: 38%  
+- B: 62%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 19
+**Question Type:** Multiple Choice  
+**Topic:** Cloud Service Models (Deploying VMs)
+
+You are tasked with deploying Azure virtual machines for your company. Which cloud service model fits this requirement?
+
+**Answer Choices:**
+A) Software as a Service (SaaS)  
+B) Platform as a Service (PaaS)  
+C) Infrastructure as a Service (IaaS)  
+D) Function as a Service (FaaS)
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- VMs are an IaaS offering where you manage the OS and runtime while Azure manages the underlying hardware.  
+- SaaS delivers complete applications.  
+- PaaS abstracts OS/runtime (e.g., App Service).  
+- FaaS is event-driven serverless (Azure Functions).
+
+**Community Voting (observed):**
+- A: 6%  
+- B: 9%  
+- C: 79%  
+- D: 6%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 20
+**Question Type:** Multiple Choice  
+**Topic:** Enterprise Organization and Segmentation
+
+A company with many divisions wants Azure segmented so that each division has its own administrators and spending/isolation boundaries while minimizing administrative overhead. What is the recommended approach?
+
+**Answer Choices:**
+A) Create separate Microsoft Entra ID (Azure AD) tenants for each division  
+B) Use multiple subscriptions under a single tenant, organized with Management Groups and RBAC  
+C) Place all resources in one subscription and separate with resource groups only  
+D) Create separate VNets for each division in a single resource group
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Management Groups organize and govern at scale; subscriptions provide isolation/billing boundaries per division; RBAC assigns admin rights per scope.  
+- Multiple Entra ID tenants complicate identity and cross-division access unnecessarily for most cases.  
+- Resource groups/VNets alone don’t provide the required governance and billing isolation.
+
+**Community Voting (observed):**
+- A: 17%  
+- B: 71%  
+- C: 7%  
+- D: 5%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
