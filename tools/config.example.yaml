@@ -1,0 +1,26 @@
+# Example configuration for crawlforai_scraper.py
+# Copy this to config.yaml and customize as needed
+
+# Rate limiting settings
+rate_limit: 2.0  # Minimum seconds between requests
+
+# Retry settings
+max_retries: 3
+initial_retry_delay: 1.0
+
+# Timeout settings
+timeout: 30  # Request timeout in seconds
+
+# Output settings
+output_dir: "scraped"
+convert_html: true
+
+# Default URLs for common certification sites
+# (These are examples - update with actual URLs you want to scrape)
+urls:
+  comptia_security_plus: "https://www.examtopics.com/exams/comptia/sy0-601/"
+  aws_solutions_architect: "https://www.examtopics.com/exams/amazon/aws-certified-solutions-architect-associate/"
+  azure_fundamentals: "https://www.examtopics.com/exams/microsoft/az-900/"
+
+# Content validation
+min_content_length: 100

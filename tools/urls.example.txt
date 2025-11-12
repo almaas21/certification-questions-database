@@ -1,0 +1,12 @@
+# Example batch URLs file for crawlforai_scraper.py
+# One URL per line. Lines starting with # are ignored.
+# Copy this to urls.txt and add your actual URLs
+
+# CompTIA Security+ questions
+# https://www.examtopics.com/discussions/comptia/view/...
+
+# AWS Solutions Architect questions  
+# https://www.examtopics.com/discussions/amazon/view/...
+
+# Azure Fundamentals questions
+# https://www.examtopics.com/discussions/microsoft/view/...
