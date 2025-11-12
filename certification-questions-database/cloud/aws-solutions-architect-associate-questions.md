@@ -915,3 +915,144 @@ D) Stand up a custom Python script on EC2 with cron to rsync files to S3
 - D: 3%
 
 **Source:** ExamTopics.com (paraphrased)
+
+---
+### Question 31
+**Question Type:** Multiple Choice  
+**Topic:** Real‑Time Stream Analytics with Sliding Windows
+
+A product team needs sub‑second analytics on clickstream events for dashboards and real‑time alerts. Data volume is continuous and spiky. The solution must support tumbling and sliding‑window aggregations using SQL with minimal infrastructure management. Which option best fits?
+
+**Answer Choices:**
+A) Publish events to Amazon SNS topics; consumers read from Amazon SQS and aggregate in Lambda  
+B) Ingest with Amazon Kinesis Data Streams, process with Amazon Kinesis Data Analytics (SQL) for windowed aggregations, and deliver to downstream sinks  
+C) Land events in Amazon S3 and query with Amazon Athena on a 1‑minute schedule  
+D) Use AWS Step Functions to orchestrate EC2 Fleet workers that poll an API for events
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Kinesis Data Streams provides scalable, low‑latency ingestion; Kinesis Data Analytics (SQL) offers managed stream processing with window functions (tumbling/sliding) and built‑in scaling and fault tolerance.  
+- SNS/SQS (A) is not a stream processor and lacks native windowing.  
+- Athena on S3 (C) is batch/interactive, not real‑time.  
+- Step Functions + EC2 (D) introduces significant operational overhead and still lacks continuous SQL stream semantics.
+
+**Community Voting (observed):**
+- A: 8%  
+- B: 84%  
+- C: 5%  
+- D: 3%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+### Question 32
+**Question Type:** Multiple Choice  
+**Topic:** Expose Private Services via API Gateway VPC Link
+
+Back‑end microservices run on Amazon ECS behind a private Network Load Balancer (NLB) in private subnets. Partners must call HTTPS APIs with API keys/usage plans. The back end must remain non‑internet‑reachable, and the team wants WAF in front of the public API. What should a solutions architect do?
+
+**Answer Choices:**
+A) Make the NLB public and restrict by security groups and IP allow lists  
+B) Create an Amazon API Gateway REST API and use a VPC Link integration to the private NLB; attach AWS WAF to API Gateway  
+C) Put an Internet‑facing ALB in front of the services; attach WAF to the ALB and expose paths publicly  
+D) Deploy a NAT gateway so API Gateway can reach the private subnets directly
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- API Gateway VPC Link provides private connectivity to NLBs in VPCs without exposing the service publicly; API Gateway supports API keys/usage plans and integrates with AWS WAF.  
+- Public NLB/ALB (A/C) violates the “remain private” requirement.  
+- NAT (D) does not make API Gateway “reach into” private subnets; VPC Link is the supported pattern.
+
+**Community Voting (observed):**
+- A: 7%  
+- B: 86%  
+- C: 5%  
+- D: 2%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+### Question 33
+**Question Type:** Multiple Choice  
+**Topic:** Cross‑Account Event Routing
+
+Several AWS accounts produce application events. A central “integration” account must receive and route these events to multiple targets (Lambda, Step Functions, SQS) with minimal custom code and policy sprawl. Which approach is best?
+
+**Answer Choices:**
+A) Create one SNS topic in the central account and subscribe cross‑account HTTPS endpoints for each consumer  
+B) Create cross‑account SQS queues and have producers write to every queue directly  
+C) Use Amazon EventBridge with a central event bus; add event bus policies to allow puts from producer accounts; create rules to route to targets  
+D) Store events in S3 and have consumers poll and process new objects
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- EventBridge supports cross‑account event buses with resource‑based policies, schema filtering, and fan‑out routing to many AWS targets with low admin overhead.  
+- SNS/SQS patterns (A/B) can work but create subscription/permission sprawl and lack rich content‑based routing.  
+- S3 polling (D) increases latency and operational complexity.
+
+**Community Voting (observed):**
+- A: 10%  
+- B: 8%  
+- C: 78%  
+- D: 4%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+### Question 34
+**Question Type:** Multiple Choice  
+**Topic:** DynamoDB Capacity for Unpredictable Spikes
+
+A mobile game backend stores player state in DynamoDB. Traffic is unpredictable with sudden 10× surges during promotions. The team wants to avoid capacity planning and reduce throttling risk while keeping operations minimal. What should they choose?
+
+**Answer Choices:**
+A) DynamoDB On‑Demand capacity mode  
+B) Provisioned capacity with target‑tracking auto scaling  
+C) Amazon RDS MySQL with read replicas  
+D) Amazon S3 with Athena
+
+**Correct Answer:** A
+
+**Detailed Explanation:**
+- On‑Demand capacity automatically scales read/write throughput to actual traffic without forecasting or managing auto‑scaling thresholds.  
+- Provisioned (B) can handle many cases but still requires min/max settings and may lag during abrupt spikes.  
+- RDS (C) and S3 (D) are not suitable NoSQL KV stores for single‑digit‑ms access patterns.
+
+**Community Voting (observed):**
+- A: 81%  
+- B: 15%  
+- C: 2%  
+- D: 2%
+
+**Source:** ExamTopics.com (paraphrased)
+
+---
+### Question 35
+**Question Type:** Multiple Choice  
+**Topic:** Private Access to AWS APIs from Private Subnets (No NAT)
+
+EC2 instances in private subnets must read from AWS Systems Manager Parameter Store, retrieve secrets from AWS Secrets Manager, and send logs to CloudWatch Logs. Security forbids internet egress and the team wants to avoid NAT gateway costs while keeping traffic within the AWS network. What is the best solution?
+
+**Answer Choices:**
+A) Add a NAT gateway in each private subnet and route 0.0.0.0/0 to it  
+B) Create Interface VPC endpoints (AWS PrivateLink) for Secrets Manager, Systems Manager (ssm, ec2messages, ssmmessages), and CloudWatch Logs; update security groups/DNS  
+C) Create a single Gateway VPC endpoint for S3 and use it for all AWS service calls  
+D) Use an internet proxy on EC2 in a public subnet
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Interface VPC endpoints provide private connectivity to AWS API endpoints (Secrets Manager, SSM, CloudWatch Logs) from private subnets, eliminating public internet paths and NAT charges.  
+- Gateway endpoints (C) apply to S3/DynamoDB only.  
+- NAT (A) and internet proxies (D) violate the “no internet egress” requirement and add cost/ops.
+
+**Community Voting (observed):**
+- A: 7%  
+- B: 88%  
+- C: 3%  
+- D: 2%
+
+**Source:** ExamTopics.com (paraphrased)
