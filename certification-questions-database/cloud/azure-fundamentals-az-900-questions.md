@@ -625,3 +625,149 @@ D) Create separate VNets for each division in a single resource group
 - D: 5%
 
 **Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+---
+### Question 21
+**Question Type:** Multiple Choice  
+**Topic:** Cost Management and Budget Alerts
+
+You need to receive email alerts when projected Azure spending for a subscription is forecasted to exceed a predefined threshold. Which capability should you use?
+
+**Answer Choices:**
+A) Azure Advisor cost recommendations  
+B) Azure Cost Management Budgets  
+C) Azure Pricing Calculator  
+D) Azure Service Health
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- Azure Cost Management Budgets let you define monthly/quarterly/annual limits with actual and forecast thresholds that trigger email, action groups, or automation.  
+- Advisor only provides optimization suggestions.  
+- Pricing Calculator estimates costs pre-deployment.  
+- Service Health reports incidents/maintenance, not costs.
+
+**Community Voting (observed):**
+- A: 10%  
+- B: 81%  
+- C: 6%  
+- D: 3%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 22
+**Question Type:** Multiple Choice  
+**Topic:** Web Application Protection
+
+You need to protect an internet-facing web application from common exploits such as SQL injection and cross-site scripting, using managed rule sets and custom rules. Which Azure service should you use?
+
+**Answer Choices:**
+A) Network Security Groups (NSG)  
+B) Azure Firewall  
+C) Web Application Firewall (WAF) on Application Gateway or Front Door  
+D) Azure DDoS Protection
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- WAF is designed to protect HTTP/HTTPS workloads with managed OWASP rule sets and custom rules.  
+- NSGs are L3/L4 stateless ACLs.  
+- Azure Firewall is a stateful L3–L7 firewall but not specialized for OWASP protection.  
+- DDoS focuses on volumetric attack mitigation, not app-layer exploit signatures.
+
+**Community Voting (observed):**
+- A: 8%  
+- B: 11%  
+- C: 74%  
+- D: 7%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 23
+**Question Type:** Multiple Choice  
+**Topic:** Storage Redundancy (Zones + Cross-Region Read)
+
+You require both zone redundancy within the primary region and the ability to read from the secondary region if a regional outage occurs. Which redundancy option should you choose?
+
+**Answer Choices:**
+A) ZRS (Zone-redundant storage)  
+B) GRS (Geo-redundant storage)  
+C) RA‑GRS (Read-access Geo-redundant)  
+D) RA‑GZRS (Read-access Geo-zone-redundant)
+
+**Correct Answer:** D
+
+**Detailed Explanation:**
+- ZRS provides zone redundancy in a single region only.  
+- GRS replicates to a paired region but no read access to secondary.  
+- RA‑GRS provides read access to secondary but no zone redundancy in the primary.  
+- RA‑GZRS combines ZRS in the primary with asynchronous replication to a secondary and read access.
+
+**Community Voting (observed):**
+- A: 9%  
+- B: 18%  
+- C: 32%  
+- D: 41%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 24
+**Question Type:** Multiple Choice  
+**Topic:** Hybrid Connectivity
+
+A financial services company needs a highly reliable private connection from on-premises to Azure with predictable latency and higher throughput than typical IPsec VPNs. Which connectivity option should you recommend?
+
+**Answer Choices:**
+A) Point-to-site VPN  
+B) Site-to-site VPN  
+C) Azure ExpressRoute  
+D) Virtual network peering
+
+**Correct Answer:** C
+
+**Detailed Explanation:**
+- ExpressRoute provides private connectivity over a partner circuit, higher bandwidth options, and predictable performance; not over the public Internet.  
+- P2S and S2S VPNs traverse the Internet and typically provide lower throughput and less predictable latency.  
+- VNet peering connects VNets within Azure, not on-prem to Azure.
+
+**Community Voting (observed):**
+- A: 5%  
+- B: 17%  
+- C: 72%  
+- D: 6%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
+
+---
+
+### Question 25
+**Question Type:** Multiple Choice  
+**Topic:** Resource Protection and Governance
+
+You must prevent accidental deletion of an entire resource group while allowing updates to resources within it. What should you configure?
+
+**Answer Choices:**
+A) ReadOnly lock on the resource group  
+B) Delete lock on the resource group  
+C) Azure Policy at the subscription scope  
+D) Blueprints assignment
+
+**Correct Answer:** B
+
+**Detailed Explanation:**
+- A Delete lock prevents delete operations at the scope but still allows read/write updates.  
+- A ReadOnly lock blocks write operations too, which is too restrictive.  
+- Policy/Blueprints govern configuration and deployment packages; they do not directly block deletions like locks.
+
+**Community Voting (observed):**
+- A: 21%  
+- B: 69%  
+- C: 6%  
+- D: 4%
+
+**Source:** ExamTopics.com AZ‑900 page (patterns paraphrased)
